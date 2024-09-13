@@ -21,9 +21,16 @@ td {
     text-align: center;
 }
 
-tr:nth-child(even) {background-color: #E8EAF6;}
+tr:nth-child(even) {
+    background-color: #E8EAF6;
+}
 
 th {
     background-color: #9575CD;
     color: white;
-  }
+}
+
+img {
+    width: 200px;
+    height: 250px;
+}

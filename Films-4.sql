@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 13 sep. 2024 à 08:17
+-- Généré le : ven. 13 sep. 2024 à 13:15
 -- Version du serveur : 8.0.35
 -- Version de PHP : 8.2.20
 
@@ -31,7 +31,7 @@ CREATE TABLE `films` (
   `id` int NOT NULL,
   `titre` varchar(200) NOT NULL,
   `realisateur` varchar(100) NOT NULL,
-  `date` date NOT NULL,
+  `date` int NOT NULL,
   `img` varchar(250) NOT NULL,
   `duree` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -41,16 +41,16 @@ CREATE TABLE `films` (
 --
 
 INSERT INTO `films` (`id`, `titre`, `realisateur`, `date`, `img`, `duree`) VALUES
-(1, 'Inception', 'Christopher Nolan', '2010-07-16', '', 148),
-(2, 'The Matrix', 'Lana Wachowski, Lilly Wachowski', '1999-03-31', '', 136),
-(3, 'Interstellar', 'Christopher Nolan', '2014-11-07', '', 169),
-(4, 'Pulp Fiction', 'Quentin Tarantino', '1994-10-14', '', 154),
-(5, 'The Shawshank Redemption', 'Frank Darabont', '1994-09-23', '', 142),
-(6, 'Fight Club', 'David Fincher', '1999-10-15', '', 139),
-(7, 'The Godfather', 'Francis Ford Coppola', '1972-03-24', '', 175),
-(8, 'The Dark Knight', 'Christopher Nolan', '2008-07-18', '', 152),
-(9, 'Forrest Gump', 'Robert Zemeckis', '1994-07-06', '', 142),
-(10, 'Gladiator', 'Ridley Scott', '2000-05-05', '', 155);
+(1, 'Inception', 'Christopher Nolan', 2010, 'https://www.aceshowbiz.com/images/still/inception_poster19.jpg', 148),
+(2, 'The Matrix', 'Lana Wachowski, Lilly Wachowski', 1999, 'https://image.tmdb.org/t/p/original/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg', 136),
+(3, 'Interstellar', 'Christopher Nolan', 2014, 'https://image.tmdb.org/t/p/original/nCbkOyOMTEwlEV0LtCOvCnwEONA.jpg', 169),
+(4, 'Pulp Fiction', 'Quentin Tarantino', 1994, 'https://image.tmdb.org/t/p/original/gSnbhR0vftfJ2U6KpGmR7WzZlVo.jpg', 154),
+(5, 'The Shawshank Redemption', 'Frank Darabont', 1994, 'https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg', 142),
+(6, 'Fight Club', 'David Fincher', 1999, 'https://cdn1.cinenode.com/movie_poster/83/full/fight-club-83423.jpg', 139),
+(7, 'The Godfather', 'Francis Ford Coppola', 1972, 'https://product-image.juniqe-production.juniqe.com/media/catalog/product/seo-cache/x800/144/16/144-16-101P/Godfather-Aycan-Yilmaz-Affiche.jpg', 175),
+(8, 'The Dark Knight', 'Christopher Nolan', 2008, 'https://payload.cargocollective.com/1/10/320683/10018575/cc_1200.JPG', 152),
+(9, 'Forrest Gump', 'Robert Zemeckis', 1994, 'https://image.tmdb.org/t/p/original/8aBHdTp6MZ7RRE45maIYrEPo6IJ.jpg', 142),
+(10, 'Gladiator', 'Ridley Scott', 2000, 'https://2.bp.blogspot.com/-6Zk3VfCi8qE/VE6llGrRa0I/AAAAAAAAB84/saRXZtZzeVg/s1600/b50401kxw24.jpg', 155);
 
 -- --------------------------------------------------------
 
