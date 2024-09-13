@@ -95,7 +95,11 @@ class LesFilms {
     private $listFilms =[];
 
     public function returnLesFilms() {
-        echo $this->listFilms;
+        return $this->listFilms;
+    }
+
+    public function ajouterListFilm($unFilm){
+        $listFilms[]=$unFilm;
     }
 }
 
