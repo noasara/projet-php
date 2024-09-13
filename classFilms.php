@@ -90,7 +90,7 @@ class Film
 }
 
 class LesFilms {
-    private $listFilms =[];
+    private $listFilms = [];
 
     public function returnLesFilms() {
         return $this->listFilms;
