@@ -53,6 +53,9 @@ include "connectBDD.php";
     </div></form>
     <br>
 </body>
+<style>
+
+</style>
 </html>
 
 <?php
@@ -95,7 +98,7 @@ $insert_sql = "INSERT INTO films (titre, realisateur, date, img, duree) VALUES (
 $stmt = $id->prepare($insert_sql);
 
     // Associer les paramètres
-    $stmt->bind_param("ssisi", $titre, $realisateur, $date, $img, $duree);
+    $stmt->bind_param("ssisi", $titre,$realisateur, $date, $img, $duree);
 
     // Exécuter la requête
     if ($stmt->execute()) {

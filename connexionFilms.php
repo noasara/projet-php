@@ -35,10 +35,11 @@
     <title>Connexion</title>
 </head>
 <body>
+    <h2>Connexion</h2>
     <form action="" method="post">
-       <p id="mail">E-mail :</p><input type="text" name="mail" placeholder="Ton mail : " required>
-       <p>Mot de passe :</p><input type="password" name="password" placeholder="Ton mot de passe :" required>
-       <?php if(isset($erreur)) echo $erreur;?>
+       <p id="mail">E-mail </p><input type="text" name="mail" placeholder="Ton mail : " required>
+       <p>Mot de passe </p><input type="password" name="password" placeholder="Ton mot de passe :" required>
+       <?php if(isset($erreur)) echo $erreur;?><br><br>
        <input id="connexion" type="submit" value="Connexion" name="bout">
     </form>
 </body>
