@@ -68,7 +68,7 @@ include "connectBDD.php";
 
 if (!$id) {
     die("Échec de la connexion : " . mysqli_connect_error());
-}else echo"Connexion réussie";
+ }//else echo"Connexion réussie";
 
 
 
