@@ -1,3 +1,6 @@
+<?php
+include "connectBDD.php";
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +15,7 @@
     <br>
     <ul>
         <li>
-        <form action="ajoutFilm.php" method="POST">
+        <form action="#" method="POST">
         <label for="titre">Titre du film</label>
         <input type="text" id="titre" name="titre"/></li>
         
@@ -31,35 +34,35 @@
         <br>
 
         <li>
-        <label for="img">Affiche du film (importez une image)</label>
-            <input type="file" id="img" name="img" accept="img/*" required/></li>
+        <label for="img">Affiche du film (insérez le lien)</label>
+            <input type="text" id="img" name="img" required/></li>
 
         <br>
 
         <li>
         <label for="duree">Durée du film (en minutes)</label>
         <input type="int" id="duree" name="duree" required/></li>
-        </form>
+        
     </ul>
 
     <br>
 
     <div class="button">
         <button type="submit">Ajouter le film</button>
-    </div>
+    </div></form>
     <br>
 </body>
 </html>
 
 <?php
-$servername = "localhost";
-$database = "projet-php";
-$username = "root";
-$password = "";
+// $servername = "localhost";
+// $database = "projet-php";
+// $username = "root";
+// $password = "";
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+// $conn = mysqli_connect($servername, $username, $password, $database);
 
-if (!$conn) {
+if (!$id) {
     die("Échec de la connexion : " . mysqli_connect_error());
 }else echo"Connexion réussie";
 
@@ -67,15 +70,17 @@ if (!$conn) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
+    // echo "oui lol";
     $titre = $_POST['titre'];
     $realisateur = $_POST['realisateur'];
-    $date = $_POST['date_sortie'];
-    $img = $_FILES['image']['name'];
+    $date = $_POST['date'];
+    $img = $_POST['img'];
     $duree = $_POST['duree'];
 
-    $sql = "SELECT * FROM films WHERE titre = ? AND date_sortie = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $titre, $date);
+
+    $sql = "SELECT * FROM films WHERE titre = ? AND date = ?";
+    $stmt = $id->prepare($sql);
+    $stmt->bind_param("si", $titre, $date);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -84,23 +89,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Le film existe déjà dans la base de données.";
     } else {
         //Le film n'existe pas, on peut donc l'insérer dans la bdd
-$insert_sql = "INSERT INTO films (titre, realisateur, date_sortie, img, duree) VALUES (?, ?, ?, ?, ?)";
+$insert_sql = "INSERT INTO films (titre, realisateur, date, img, duree) VALUES (?, ?, ?, ?, ?)";
 
-$stmt = $conn->prepare($insert_sql);
+$stmt = $id->prepare($insert_sql);
 
     // Associer les paramètres
-    $stmt->bind_param("ssisi", $titre, $realisateur, $date_sortie, $img, $duree);
+    $stmt->bind_param("ssisi", $titre, $realisateur, $date, $img, $duree);
 
     // Exécuter la requête
     if ($stmt->execute()) {
-        echo "Le film a été ajouté avec succès !";
+        // echo "Le film a été ajouté avec succès !";
+        header('location:accueil.php');
     } else {
         echo "Erreur lors de l'ajout du film : " . $stmt->error;
-    }}
+    }
+}
          $stmt->close();
-         $insert_sql->close();
+         $insert_stmt->close();
 }
 
 // Fermer la connexion à la base de données
-$conn->close();
+$id->close();
 ?>
