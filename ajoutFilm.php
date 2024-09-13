@@ -20,25 +20,25 @@
 
         <li>
         <label for="realisateur">Réalisateur</label>
-        <input type="text" id="realisateur" name="realisateur" /></li>
+        <input type="text" id="realisateur" name="realisateur" required/></li>
         
         <br>
 
         <li>
-        <label for="date">Date de sortie</label>
-        <input type="text" id="date" name="date" /></li>
+        <label for="date">Année de sortie</label>
+        <input type="int" id="date" name="date" required/></li>
 
         <br>
 
         <li>
-        <label for="image">Affiche du film (importez une image)</label>
-            <input type="file" id="image" name="image" accept="image/*" required/></li>
+        <label for="img">Affiche du film (importez une image)</label>
+            <input type="file" id="img" name="img" accept="img/*" required/></li>
 
         <br>
 
         <li>
-        <label for="duree">Durée du film</label>
-        <input type="int" id="duree" name="duree" /></li>
+        <label for="duree">Durée du film (en minutes)</label>
+        <input type="int" id="duree" name="duree" required/></li>
         </form>
     </ul>
 
@@ -61,30 +61,44 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 
 if (!$conn) {
     die("Échec de la connexion : " . mysqli_connect_error());
-}
+}else echo"Connexion réussie";
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
     $titre = $_POST['titre'];
     $realisateur = $_POST['realisateur'];
-    $date = $_POST['date'];
-    $image = $_POST['image'];
+    $date = $_POST['date_sortie'];
+    $img = $_FILES['image']['name'];
     $duree = $_POST['duree'];
 
-$sql = "INSERT INTO films (titre, realisateur, date, image, duree) VALUES (?,?,?,?,?)";
+    $sql = "SELECT * FROM films WHERE titre = ? AND date_sortie = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $titre, $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-$stmt = $conn->prepare($sql);
+    if ($result->num_rows > 0) {
+        // Le film existe déjà
+        echo "Le film existe déjà dans la base de données.";
+    } else {
+        //Le film n'existe pas, on peut donc l'insérer dans la bdd
+$insert_sql = "INSERT INTO films (titre, realisateur, date_sortie, img, duree) VALUES (?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($insert_sql);
 
     // Associer les paramètres
-    $stmt->bind_param("ssssi", $titre, $realisateur, $date, $image, $duree);
+    $stmt->bind_param("ssisi", $titre, $realisateur, $date_sortie, $img, $duree);
 
     // Exécuter la requête
     if ($stmt->execute()) {
         echo "Le film a été ajouté avec succès !";
     } else {
         echo "Erreur lors de l'ajout du film : " . $stmt->error;
-    }
+    }}
          $stmt->close();
+         $insert_sql->close();
 }
 
 // Fermer la connexion à la base de données
