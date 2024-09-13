@@ -87,8 +87,6 @@ class Film
         echo "Titre : $this->titre, Réalisateur : $this->realisateur, Date : $this->date, $this->img, Durée : $this->duree";
     }
 
- 
-
 }
 
 class LesFilms {
@@ -99,7 +97,7 @@ class LesFilms {
     }
 
     public function ajouterListFilm($unFilm){
-        $listFilms[]=$unFilm;
+        $this->listFilms[]=$unFilm;
     }
 }
 
