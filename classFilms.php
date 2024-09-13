@@ -87,19 +87,17 @@ class Film
         echo "Titre : $this->titre, Réalisateur : $this->realisateur, Date : $this->date, $this->img, Durée : $this->duree";
     }
 
- 
-
 }
 
 class LesFilms {
-    private $listFilms =[];
+    private $listFilms = [];
 
     public function returnLesFilms() {
         return $this->listFilms;
     }
 
     public function ajouterListFilm($unFilm){
-        $listFilms[]=$unFilm;
+        $this->listFilms[]=$unFilm;
     }
 }
 
