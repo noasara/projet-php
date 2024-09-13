@@ -18,7 +18,7 @@
             $_SESSION["pseudo"] = $ligne["pseudo"];
             $_SESSION["niveau"] = $ligne["niveau"];
             $_SESSION["id"]=$ligne["id"];
-            //header("location:accueil.php");
+            header("location:accueil.php");
             
         } else {
             $erreur =  "<h4> Mot de passe incorrect ! </h4>";
