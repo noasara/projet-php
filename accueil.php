@@ -24,11 +24,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="accueil.css" rel="stylesheet" type="text/css" />
     <title>Accueil</title>
 </head>
 <body>
     <h1>La liste des Films</h1>
-    <ul>
+    
+    <!-- <ul>
             <?php 
             //var_dump($lesFilms);
             foreach ($lesFilms->returnLesFilms() as $film) { //echo "reussi"; ?>
@@ -40,14 +42,32 @@
                 <img src="imgFilm/<?=$film->getImg()?>" alt="">
                 <?php } ?>
             </li>
-    </ul>
+    </ul> -->
+           
 
 
     <table>
-        <td><tr>Titre</tr><tr>Réalisateur</tr></td>
+        <tr>
+            <th>Titre</th>
+            <th>Réalisateur</th>
+            <th>Année de sortie</th>
+            <th>Durée du film</th>
+            <th>Affiche</th>
+            
 
-        <td><th><?php $film->getTitre?></th><th><?php $film->getRealisateur?></th></td>
-        
+        </tr>
+
+        <?php foreach ($lesFilms->returnLesFilms() as $film) {?>
+        <tr>
+            <td><?php echo $film->getTitre()?></td>
+            <td><?php echo $film->getRealisateur()?></td>
+            <td><?php echo $film->getDate()?></td>
+            <td><?php echo $film->getDuree()?> minutes</td>
+            <td><?php echo $film->getImg()?></td>
+            <?php } ?>
+        </tr>
+
+
     </table>
     
 </body>
