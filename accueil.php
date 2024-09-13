@@ -37,6 +37,7 @@
                 <img src="imgFilm/<?=$film->getImg()?>" alt="">
 
             </li>
+        
     </ul>
     
 </body>
