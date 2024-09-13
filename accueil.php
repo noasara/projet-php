@@ -4,6 +4,9 @@ include "connectBDD.php";
 include "classFilms.php";
 session_start();
 
+$pseudo = $_SESSION["pseudo"];
+$niveau = $_SESSION["niveau"];
+
 $lesFilms = new LesFilms();
 
 $req = "select * from films";
@@ -31,6 +34,21 @@ while ($ligne = mysqli_fetch_assoc($res)) {
 
 <body>
     <h1>La liste des Films</h1>
+    
+    
+    <p>Bonjour <?=$pseudo?></p>
+
+    <?php
+        if($niveau == 2){
+            ?>
+                <a href="ajoutFilm.php">Ajouter un film</a>
+            <?php
+        }
+    ?>
+
+    <a href="deco.php">Deconnexion</a><br><br>
+    
+    
 
     <!-- <ul>
             <?php
