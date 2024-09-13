@@ -11,7 +11,7 @@
     
     while($ligne = mysqli_fetch_assoc($res)) { 
          $unFilm = new Film($ligne['id'], $ligne['titre'], $ligne['realisateur'], $ligne['date'], $ligne['img'], $ligne['duree']);
-         $lesFilms[] = $unFilm;
+         $lesFilms->ajouterListFilm($unFilm);
     }    
 
 ?>
@@ -28,14 +28,14 @@
 <body>
     <h1>La liste des Films</h1>
     <ul>
-        <?php foreach ($lesFilms->returnLesFilms() as $film): ?>
+            <?php foreach ($lesFilms->returnLesFilms() as $film) { ?>
             <li>
                 Titre : <?php echo $film->getTitre() ?> <br>
                 Réalisateur : <?php echo $film->getRealisateur() ?> <br>
                 Année de sortie : <?php echo $film->getDate() ?> <br>
                 Durée du film : <?php echo $film->getDuree() ?> minutes<br>
                 <img src="imgFilm/<?=$film->getImg()?>" alt="">
-
+                <?php } ?>
             </li>
     </ul>
     
