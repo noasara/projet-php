@@ -30,7 +30,7 @@ while ($ligne = mysqli_fetch_assoc($res)) {
 </head>
 
 <body>
-    <h1>La liste des Films</h1>
+    <h2>La Liste des Films</h2>
 
     <!-- <ul>
             <?php
