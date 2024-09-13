@@ -92,14 +92,14 @@ class Film
 }
 
 class LesFilms {
-    private $listFilms =[];
+    private $listFilms = [];
 
     public function returnLesFilms() {
         return $this->listFilms;
     }
 
     public function ajouterListFilm($unFilm){
-        $listFilms[]=$unFilm;
+        $this->listFilms[]=$unFilm;
     }
 }
 
