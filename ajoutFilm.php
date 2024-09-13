@@ -6,6 +6,7 @@ include "connectBDD.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="ajoutFilm.css" rel="stylesheet" type="text/css" />
     <title>Ajout d'un film</title>
 </head>
 <body>
